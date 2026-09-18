@@ -1,0 +1,11 @@
+source_ip,attack_type,severity
+192.168.1.10,Brute Force,High
+10.0.0.5,Port Scan,Medium
+172.16.0.3,DDoS,Critical
+192.168.1.25,Reconnaissance,Low
+8.8.8.8,Malware,High
+203.0.113.5,Brute Force,High
+198.51.100.7,DDoS,Critical
+10.10.10.2,Port Scan,Medium
+172.20.0.15,Malware,High
+192.168.0.50,Reconnaissance,Low
