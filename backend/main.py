@@ -16,7 +16,19 @@ import os
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
-
+with engine.connect() as conn:
+    conn.execute(text("""
+        CREATE TABLE IF NOT EXISTS alerts (
+            id SERIAL PRIMARY KEY,
+            source_ip VARCHAR(50),
+            attack_type VARCHAR(100),
+            severity VARCHAR(20),
+            risk_score INTEGER,
+            status VARCHAR(20),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """))
+    conn.commit()
 @app.get("/")
 def home():
     return {
