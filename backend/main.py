@@ -6,12 +6,14 @@ from sqlalchemy import create_engine, text
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://cyber-fusion-nine.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 import os
 
 DATABASE_URL = os.getenv("DATABASE_URL")
