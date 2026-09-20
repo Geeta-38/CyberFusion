@@ -22,26 +22,28 @@ const resolvedAlerts = alerts.filter(
 const criticalAlerts = alerts.filter(
   (a) => a.severity === "Critical"
 ).length;
+const API_URL = "https://cyberfusion-a8hb.onrender.com";
+
 const resolveAlert = async (id) => {
-  await fetch(`http://127.0.0.1:8000/resolve/${id}`, {
+  await fetch(`${API_URL}/resolve/${id}`, {
     method: "PUT",
   });
 
-  const res = await fetch("http://127.0.0.1:8000/alerts");
+  const res = await fetch(`${API_URL}/alerts`);
   const data = await res.json();
 
   setAlerts(data);
 };
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/alerts")
-      .then((res) => res.json())
-      .then((data) => setAlerts(data))
-      .catch((err) => console.log(err));
-  }, []);
 
+useEffect(() => {
+  fetch(`${API_URL}/alerts`)
+    .then((res) => res.json())
+    .then((data) => setAlerts(data))
+    .catch((err) => console.log(err));
+}, []);
   const analyzeAlert = async (id) => {
     const res = await fetch(
-      `http://127.0.0.1:8000/analyze/${id}`
+`https://cyberfusion-a8hb.onrender.com/analyze/${id}`
     );
 
     const data = await res.json();
