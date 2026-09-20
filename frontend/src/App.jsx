@@ -38,7 +38,10 @@ const resolveAlert = async (id) => {
 useEffect(() => {
   fetch(`${API_URL}/alerts`)
     .then((res) => res.json())
-    .then((data) => setAlerts(data))
+ .then((data) => {
+      console.log("ALERT DATA:", data);
+      setAlerts(data);
+    })
     .catch((err) => console.log(err));
 }, []);
   const analyzeAlert = async (id) => {
